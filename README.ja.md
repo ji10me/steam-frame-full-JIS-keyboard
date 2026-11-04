@@ -4,7 +4,11 @@ Steam FrameのダッシュボードとローカルアプリでJISキーボード
 
 このリポジトリは[TaiKeid氏のFull Keyboard](https://github.com/TaiKeid/steam-frame-full-keyboard)を元にした、ji10meのJIS対応フォークです。JISプロファイル・ヘルパー・統合処理も[MIT License](LICENSE)で公開しています。元の著作権表示を保持し、第三者のコードには[各ライセンス](third_party/README.md)が適用されます。
 
-[English](README.md) | **日本語**
+[English](README.en.md) | **日本語**
+
+[日本語トップページ](README.md) | [インストール方法](INSTALL.ja.md) | [使い方](USAGE.ja.md)
+
+このページは通常版とデスクトップJISの詳しい説明です。Steamメニューまで統合する場合は、[インストール方法](INSTALL.ja.md)の順序で進めてください。以下の自動起動OFFの説明は、統合前の通常版・デスクトップJIS向けです。
 
 Steam Frame本体で使う、フルサイズの仮想キーボードです。矢印キー、テンキー、Ctrl・Alt・Shift、コピー／貼り付けボタンを備え、ブラウザーでの入力やデスクトップ上の編集に利用できます。
 

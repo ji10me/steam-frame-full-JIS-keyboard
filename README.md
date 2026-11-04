@@ -1,149 +1,55 @@
 # Full JIS Keyboard for Steam Frame
 
-**English** | [日本語](README.ja.md)
+**日本語** | [English](README.en.md)
 
-This is [ji10me's JIS integration fork](https://github.com/ji10me/steam-frame-full-JIS-keyboard)
-of [TaiKeid's Full Keyboard](https://github.com/TaiKeid/steam-frame-full-keyboard).
-For the Steam dashboard and local-app JIS integration, see the
-[Japanese installation guide](extras/unified-jis/README.ja.md).
-The JIS profiles, helpers and integration additions use the same [MIT License](LICENSE);
-third-party components retain their [own notices](third_party/README.md).
+Steam Frame本体のSteamメニューやデスクトップで、日本語のJIS配列キーボードを使うためのプロジェクトです。ローマ字入力からのかな漢字変換、半角／全角切り替え、矢印キー、テンキー、コピー／貼り付けに対応します。入力先によって使える操作は異なります。
 
-A full-size alternative to Steam Frame's built-in virtual keyboard, made for everyday use on the headset. It adds proper arrow keys, a numpad, Ctrl and Alt, and dedicated Copy and Paste buttons for browsing, signing in, editing text, and using local apps.
+[TaiKeid氏のFull Keyboard](https://github.com/TaiKeid/steam-frame-full-keyboard)を元にした、ji10meのJIS対応フォークです。アプリ一覧や実行ファイルの名前は、引き続き **Full Keyboard** / `framekeyboard` です。
 
-**Full Keyboard is launched manually by default.** By default, SteamOS's keyboard button opens the original keyboard. An experimental **Replace native keyboard** option in Experimental redirects supported requests while Full Keyboard is running. It requires Steam Developer Mode and falls back to the original keyboard when unavailable. Enable **Start with SteamOS** in the same card to start replacement in the background at login. It stays hidden until summoned. See [native replacement](docs/native-replacement.md).
+![Graphiteテーマの日本語JISキーボード](docs/images/keyboard-jis-graphite.png)
 
-![Full Keyboard Japanese JIS layout with the Graphite theme](docs/images/keyboard-jis-graphite.png)
+## はじめに読むもの
 
-*Japanese JIS layout and Graphite theme, rendered by the native app using the [desktop JIS profiles](extras/jis-desktop/README.md).*
+- **[インストール方法](INSTALL.ja.md)**：必要なもの、通常版の導入、JIS設定、ダッシュボード統合、元に戻す方法。
+- **[使い方](USAGE.ja.md)**：開閉、日本語変換、移動・サイズ変更、困ったときの対処。
+- [通常版とデスクトップJISの詳しい説明](README.ja.md)。
 
-## What it does
+## できること
 
-- Full-size layout with F1–F12, navigation keys, arrow keys, numpad, Ctrl, Alt, and Shift.
-- Dedicated Copy and Paste icons that send Ctrl+C and Ctrl+V.
-- Native Enter and numpad Enter keys. The focused app decides whether Enter submits or inserts a newline.
-- Controller laser typing, press/release haptic clicks, and subtle hover feedback.
-- Move with the laser handle below the keyboard, or enable grab movement in Settings. Size controls are available in both modes.
-- Dashboard following, saved placement, and relaunch-to-recenter recovery.
-- Editable layouts, languages, and themes, with a settings menu inside VR.
-- English, German, French, Spanish, Italian, Brazilian Portuguese, Russian, Ukrainian, Japanese, Chinese and Korean options. Chinese has Simplified and Traditional Pinyin; Korean uses two-set Hangul.
+- コントローラーのレーザーとトリガーによる入力。
+- JIS配列での日本語・英数入力と半角／全角切り替え。
+- Steamの入力欄では内蔵ローマ字変換、KDEデスクトップでは既存のIBus/Anthyによるかな漢字変換。
+- 対応するウィンドウのキーボードボタンからの表示・非表示。
+- キーボードの移動、拡大・縮小、配置の保存。
 
-## Where it works
+## 導入する構成
 
-Full Keyboard is a quality-of-life tool for the **on-device experience**. It is designed for the Frame dashboard and local apps, including desktop and floating app windows. Focus a text field in the app, then type using the controller laser.
+| 構成 | 用途 | 起動方法 |
+| --- | --- | --- |
+| デスクトップJIS | KDEデスクトップや対応アプリで日本語入力 | アプリ一覧から手動で開閉 |
+| JIS統合ツール（実験用） | SteamメニューとローカルアプリのキーボードをJISへ振り分け | 導入時にSteamVR連動の自動起動を有効化。呼び出すまで非表示 |
 
-It is **not a keyboard for streamed VR applications such as VRChat**. Closing the dashboard hides the keyboard and releases its input. It does not capture controls or send keys to a streamed VR app. Reopening the dashboard brings it back.
+最初にFull Keyboard **0.8.2**とデスクトップJISを導入し、日本語入力を確認してから、必要に応じてJIS統合ツールを追加します。[インストール方法](INSTALL.ja.md)の順に進めてください。
 
-This is an early release. App focus, non-US keymaps, and Japanese input can behave differently across applications; see [known limitations and troubleshooting](docs/runtime.md). Japanese composition has automated and dedicated-receiver coverage, but still needs feedback from fluent Japanese users.
+## 対応範囲
 
-## Install manually
+Steam Frame本体のダッシュボードとローカルアプリ向けです。デスクトップJISはSteamOS 0.4.5とChromeのX11/XIM構成で確認されています。ほかのFrame、アプリ、SteamOSの更新後は追加の確認が必要です。
 
-No AI tools, compilation, `sudo`, or SteamOS write access are needed for the release package.
+Steam Linkなどで配信するVRChatのゲーム内キーボードを置き換えるものではありません。Frame単体で動かすPCVR版VRChatのゲーム内入力も、このプロジェクトでは検証していません。
 
-1. On the **Steam Frame**, open the [GitHub Releases page](https://github.com/TaiKeid/steam-frame-full-keyboard/releases) in a browser. Download `framekeyboard-0.8.2-aarch64.tar.gz` and `SHA256SUMS` from the release assets into **Downloads**. Do not download GitHub's automatic source-code archive for this installation.
-2. Open a terminal in the Frame's desktop environment and run:
+ソースZIPだけでは実行に必要なARM64本体は導入されません。元プロジェクトの0.8.2リリースが別途必要です。JIS統合はSteamの内部インターフェースを使う実験機能で、更新により使えなくなる場合があります。
 
-   ```sh
-   cd ~/Downloads
-   sha256sum -c SHA256SUMS
-   tar -xzf framekeyboard-0.8.2-aarch64.tar.gz
-   cd framekeyboard-0.8.2-aarch64
-   bash install.sh
-   ```
+## ライセンスとデータ
 
-   Continue only if the checksum reports `OK`. For a newer version, use its archive and extracted directory names.
-3. Return to the Frame's dashboard and open **Full Keyboard** from the app launcher. You can also launch it from a terminal:
+プロジェクトのコードとJIS追加部分は **[MIT License](LICENSE)** です。元作者の著作権表示を保持しています。第三者のコードには[それぞれのライセンス](third_party/README.md)が適用されます。
 
-   ```sh
-   ~/.local/bin/framekeyboard
-   ```
+公開物はソースと汎用プロファイルです。実機の個人設定、入力履歴、認証情報、ログ、配置情報、導入前バックアップ、Steam/SteamVRの実行ファイルは追加していません。導入後の設定とバックアップは利用者のFrame内に保存されます。
 
-The installer adds a desktop application entry named **Full Keyboard**. If you also want a Steam Library shortcut, use Steam's **Add a Non-Steam Game** option and select Full Keyboard. A manually created shortcut has its own name; rename an old FrameKeyboard shortcut in its Properties if needed.
+## 開発資料
 
-Everything installs under your home directory. The installer preserves settings and custom profiles, replaces the current production release, and does not enable autostart or alter Steam files. Development deployments and older unmarked release directories are preserved. Internal filenames and commands remain `framekeyboard`.
+- [ビルド方法（英語）](docs/building.md)
+- [設計（英語）](docs/architecture.md)
+- [JIS統合の詳細と検証方法](extras/unified-jis/README.ja.md)
+- [変更履歴（英語）](CHANGELOG.md)
 
-To update from the installed keyboard, open Settings and press **Check for updates** at the top center. If a newer stable release is available, press **Download and install update**. The keyboard verifies the archive, installs it and restarts, preserving your settings. The old production release stays until the new one confirms a healthy start, then is removed. A failed start rolls back automatically. See [updates](docs/updates.md).
-
-For a manual update, quit Full Keyboard first. With native replacement enabled, use Settings → Quit Full Keyboard. Download the new release assets and repeat the installation steps. The installer supports reinstalling the same version or installing an older one, and refuses while Full Keyboard is running. Manual rollback means reinstalling an older release package; see [rollback and removal](docs/runtime.md#update-rollback-and-removal).
-
-## Use the keyboard
-
-| Action | Control |
-| --- | --- |
-| Type | Point at a key and press the controller trigger |
-| Use a shortcut | Tap Ctrl, Alt, or Shift, then another key; or hold the modifier with one controller and press a key with the other |
-| Super shortcuts | Tap the left Frame icon, then a key, or hold it with the other controller |
-| Desktop application menu | Tap the right SteamOS icon for a native right Super press/release; the desktop controls its action |
-| Clear a tapped modifier | Tap it again |
-| Copy / paste | Use the two icons on the left; select text first when copying |
-| Move / rotate | Unpin, point at the line below the keyboard, hold the trigger, move your hand, then release |
-| Use the headset cursor | Press AUX to show the head cursor. Aim at keys with your head and click AUX; hold AUX on the movement line to move the keyboard |
-| Use grab movement | Enable **Use Drag to Move** in the **General** settings card and apply. Point anywhere on the keyboard and hold grab/grip; the same hand's thumbstick adjusts depth |
-| Prevent accidental movement | Toggle the pin icon; the keyboard still follows the dashboard |
-| Cycle favorite layouts and languages | Press the language abbreviation beside the pin icon |
-| Move farther / closer | While holding the movement line or grabbing, push that same controller's thumbstick up / down |
-| Change size | Use the smaller / larger icons in the toolbar |
-| Hide the numpad | In Settings, check General → Hide numpad and Apply and save |
-| Change layout, language, or theme | Open the gear icon, choose profiles, then **Apply and save** |
-| Recenter | Use the recenter icon, or launch Full Keyboard again |
-| Close | Use × to hide the panel in replacement mode; otherwise it exits the app |
-| Quit replacement mode | Open Settings → Quit Full Keyboard |
-
-**If the keyboard has drifted out of reach, launch the app again.** When it is already running, another launch recenters the existing keyboard beneath the current dashboard instead of opening a second one. Its size is preserved. If the dashboard is closed, recentering waits until it opens.
-
-Closing and reopening normally restores the last position, rotation, size and Num Lock state. Numpad visibility is saved globally across all layouts. Moving or tilting the dashboard carries the keyboard with it, preserving your chosen offset. With General → Auto leveling enabled, a sideways lean within 5° eases level over 500 ms after releasing movement. Auto leveling is on by default; disable it to keep the angle you set. This preserves the desk-like forward tilt and never fights your hand during a grab.
-
-## Languages and customization
-
-Select a language in Settings and **Apply and save**. The normal Frame launcher
-sends characters from that layout independently of the system keyboard layout,
-including Shift, Caps Lock, AltGr and dead-key accents. No matching SteamOS layout
-or relaunch is needed. A fresh install defaults to English; later launches use
-your saved selection. System locale and system layout switching do not change it.
-See [language setup and switching](docs/languages.md).
-
-For Japanese, pick **Romaji**, **Kana**, or **JIS** from the Language dropdown in Settings. Romaji and Kana compose text in the keyboard and use the system Anthy dictionary for kanji conversion. Space converts; Enter commits the composition. Another Enter sends a normal Enter key. JIS mode requires an existing system IME. See [Japanese input](docs/japanese.md).
-
-An optional [desktop JIS setup](extras/jis-desktop/README.md) provides romaji input
-through IBus/Anthy and a manual show/hide launcher for the nested desktop.
-
-Chinese and Korean compose locally and can be selected alongside English and integrated Japanese without a system layout change. [The language guide](docs/languages.md#chinese-and-korean-composition) explains candidates, Hangul, and input limitations.
-
-Copy a bundled JSON profile from `~/.local/share/framekeyboard/current/share/framekeyboard/` into the matching folder below, edit it, then use the **Reload config** icon in Settings:
-
-```text
-~/.config/framekeyboard/layouts/
-~/.config/framekeyboard/languages/
-~/.config/framekeyboard/themes/
-```
-
-Use a new profile `id` to add a choice, or the same `id` to override a bundled one. [Configuration reference](docs/configuration.md) covers fields, favorites, validation, and saved placement.
-
-## How it works
-
-The keyboard is a native C++20 app. Cairo/Pango draw the keys, Vulkan/OpenVR display the panel, and libei sends native controls to the Frame's local Gamescope compositor. A feature-checked Gamescope text-input protocol sends characters resolved from the selected layout, including Japanese, Chinese and Korean composition. It does not run a browser or need an internet connection.
-
-Copy and Paste send shortcuts; the app does not read clipboard contents. It does not log typed text or save composition history. Placement and profile preferences are stored locally.
-
-The visible panel polls input and follows the dashboard at a target 60 Hz. While hidden, polling drops to 4 Hz. It redraws the texture only when its display changes or a key animation runs. With replacement enabled, closing the panel keeps the app resident for the next native request; Settings → Quit Full Keyboard exits it. With replacement off, closing the keyboard exits the process. Battery impact has not been benchmarked.
-
-## Development and feedback
-
-- [Build from source](docs/building.md)
-- [Architecture and code map](docs/architecture.md)
-- [Runtime and troubleshooting](docs/runtime.md)
-- [Manual acceptance checks](docs/acceptance.md)
-- [Roadmap](docs/plan.md) and [changelog](CHANGELOG.md)
-- [Contributing and bug reports](CONTRIBUTING.md)
-- [Release checklist](docs/releasing.md)
-- [Third-party code and licenses](third_party/README.md)
-
-Please report the app version, SteamOS version, affected app, whether it is a desktop or floating window, and steps to reproduce. Remove private text from screenshots and logs.
-
-## License
-
-Project code is available under the [MIT License](LICENSE). Vendored components keep their [upstream licenses](third_party/README.md).
-
-## AI-generated project disclaimer
-
-This project is fully AI-generated. The author is unfamiliar with C++, so please have patience and understanding. Bugs and rough edges are expected; careful reviews, clear bug reports, and contributions are welcome. Third-party components retain their original authorship and licenses.
+元プロジェクトにはAI生成コードを使っている旨の説明があります。実機での入力・表示・復旧の確認を伴う開発用のソフトウェアです。
