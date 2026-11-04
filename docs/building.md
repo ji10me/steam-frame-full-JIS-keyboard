@@ -9,8 +9,8 @@ Install C and C++20 compilers, CMake 3.24+, Ninja, Python 3, pkg-config, and dev
 The OpenVR header is vendored, but `libopenvr_api.so` comes from an installed SteamVR runtime or a separately supplied SDK library. The build searches common Linux Steam paths. Override discovery with `-DOPENVR_LIBRARY=/absolute/path/to/libopenvr_api.so` when configuring CMake.
 
 ```sh
-git clone https://github.com/TaiKeid/steam-frame-full-keyboard.git
-cd steam-frame-full-keyboard
+git clone https://github.com/ji10me/steam-frame-full-JIS-keyboard.git
+cd steam-frame-full-JIS-keyboard
 ./scripts/build.sh host
 ctest --test-dir build/host --output-on-failure
 ./build/host/framekeyboard --preview

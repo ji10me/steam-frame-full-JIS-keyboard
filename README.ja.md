@@ -1,4 +1,4 @@
-# Full Keyboard for Steam Frame
+# Full JIS Keyboard for Steam Frame
 
 Steam FrameのダッシュボードとローカルアプリでJISキーボードを統一する追加設定は、[実験用JIS統一ツール](extras/unified-jis/README.ja.md)を参照してください。
 

@@ -1,8 +1,8 @@
-# Full Keyboard for Steam Frame
+# Full JIS Keyboard for Steam Frame
 
 **English** | [日本語](README.ja.md)
 
-This is [ji10me's JIS integration fork](https://github.com/ji10me/steam-frame-full-keyboard)
+This is [ji10me's JIS integration fork](https://github.com/ji10me/steam-frame-full-JIS-keyboard)
 of [TaiKeid's Full Keyboard](https://github.com/TaiKeid/steam-frame-full-keyboard).
 For the Steam dashboard and local-app JIS integration, see the
 [Japanese installation guide](extras/unified-jis/README.ja.md).
