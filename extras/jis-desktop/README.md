@@ -2,6 +2,10 @@
 
 **English** | [日本語](README.ja.md)
 
+The JIS profiles and helpers in this folder use the [MIT License](../../LICENSE).
+Retain the Full Keyboard copyright notices and the applicable
+[third-party notices](../../third_party/README.md).
+
 ![Japanese JIS keyboard with conversion keys](../../docs/images/keyboard-jis-graphite.png)
 
 This opt-in setup adds a full-size JIS keyboard with romaji-to-kana/kanji

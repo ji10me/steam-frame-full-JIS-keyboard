@@ -2,6 +2,8 @@
 
 [English](README.md) | **日本語**
 
+このフォルダーのJISプロファイルとヘルパーは[MIT License](../../LICENSE)です。元のFull Keyboardおよび[第三者コードの著作権・ライセンス表示](../../third_party/README.md)も保持してください。
+
 ![変換キーを備えたJISキーボード](../../docs/images/keyboard-jis-graphite.png)
 
 フルサイズのJIS配列でローマ字入力し、デスクトップにあるIBus/Anthyでかな漢字変換するための追加設定です。デスクトップを選んでキーボードを開閉する **Full Keyboard（表示／非表示）** ランチャーも含みます。

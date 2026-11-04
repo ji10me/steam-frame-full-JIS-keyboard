@@ -47,8 +47,15 @@ Frameにリポジトリーをチェックアウトしたり、Frameでビルド�
 Frameで実行します。
 
 ```sh
+# このフォルダー（unified-jis）へ移動してから実行します。
+mkdir -p ~/.config/framekeyboard/languages
+cp -n languages/ja-romaji-jis.json ~/.config/framekeyboard/languages/
 python3 install.py
 ```
+
+同梱の`ja-romaji-jis`は、Steam用の内蔵ローマ字変換で使うJIS言語プロファイルです。
+デスクトップ用の`ja-jis-frame`とは入力方式が異なります。
+上のコピーは同名の既存ファイルを上書きしません。インストーラーはこれをSteam用の私有設定へコピーします。
 
 インストール時にJIS制御サービスの自動起動を有効にします。
 SteamVRが動作中なら、その場で制御サービスも起動します。
@@ -143,3 +150,12 @@ python3 validate_close.py
 その途中で開いたキーボードが閉じた場合は、準備後にもう一度キーボードボタンを押してください。
 未対応の要求、入力先を確認できない要求、Steamのインターフェース変更時には標準キーボードを残します。
 Steam Linkで動作するVRゲーム内部のキーボードを置き換える機能ではありません。
+
+## ライセンスと配布内容
+
+この追加ツール、同梱JISプロファイル、説明書は[MIT License](../../LICENSE)です。
+Copyright (c) 2026 ji10me。元のFull KeyboardはCopyright (c) 2026 TaiKeid and contributorsで、同じMITライセンスです。コピーや再配布では著作権表示とライセンス全文を保持してください。
+第三者のコードには[それぞれのライセンス](../../third_party/README.md)が適用されます。
+
+公開するのはソースと汎用プロファイルです。Frameの個人設定、入力履歴、認証情報、ログ、配置情報、導入前バックアップ、Steam/SteamVRの実行ファイルは含めません。
+既存のFull Keyboard 0.8.2を別途導入してください。異なるFrameやSteamOSでの動作は別途確認が必要です。

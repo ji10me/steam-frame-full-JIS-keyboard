@@ -2,6 +2,8 @@
 
 Steam FrameのダッシュボードとローカルアプリでJISキーボードを統一する追加設定は、[実験用JIS統一ツール](extras/unified-jis/README.ja.md)を参照してください。
 
+このリポジトリは[TaiKeid氏のFull Keyboard](https://github.com/TaiKeid/steam-frame-full-keyboard)を元にした、ji10meのJIS対応フォークです。JISプロファイル・ヘルパー・統合処理も[MIT License](LICENSE)で公開しています。元の著作権表示を保持し、第三者のコードには[各ライセンス](third_party/README.md)が適用されます。
+
 [English](README.md) | **日本語**
 
 Steam Frame本体で使う、フルサイズの仮想キーボードです。矢印キー、テンキー、Ctrl・Alt・Shift、コピー／貼り付けボタンを備え、ブラウザーでの入力やデスクトップ上の編集に利用できます。
